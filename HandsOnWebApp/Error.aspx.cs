@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using System.Web.UI;
 
 namespace HandsOnWebApp {
@@ -8,7 +9,7 @@ namespace HandsOnWebApp {
         protected void Page_Load(object sender, EventArgs e) {
             Exception exc = Server.GetLastError();
             exc = exc.InnerException ?? exc;
-            this.Label1.Text = string.Format("{0}: \"{1}\"", exc.GetType(), exc.Message);
+            this.Label1.Text = HttpUtility.HtmlEncode(string.Format("{0}: \"{1}\"", exc.GetType(), exc.Message));
             Server.ClearError();
         }
     }

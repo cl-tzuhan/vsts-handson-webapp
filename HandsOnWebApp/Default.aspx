@@ -21,7 +21,7 @@
             <asp:Button ID="Button2" runat="server" Text="消去" OnClick="Button2_Click" />
             <asp:DataList ID="DataList1" runat="server" DataSourceID="SqlDataSource1">
                 <ItemTemplate>
-                    <%# string.Format("{0} + {1} = {2}", Eval("v1"), Eval("v2"), Eval("sum")) %>
+                    <%# HttpUtility.HtmlEncode(string.Format("{0} + {1} = {2}", Eval("v1"), Eval("v2"), Eval("sum"))) %>
                 </ItemTemplate>
             </asp:DataList>
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:handsondb %>"
